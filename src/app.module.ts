@@ -10,16 +10,17 @@ import { CityService } from './services/city.service';
 // import { UserController } from './justLean-users/user.controller';
 import { CountryService } from './services/country.service';
 import { RegionService } from './services/region.service';
+require('dotenv').config()
 
 @Module({
   imports: [
     TypeOrmModule.forRoot({
       type: 'postgres',
-      host: '34.101.70.255',
+      host: process.env.HOST_POSTGRES,
       port:5432,
-      username: 'debio_admin',
-      password: 'debio#2021',
-      database: 'debio_escrow_dev',
+      username: process.env.USERNAME_POSTGRES,
+      password: process.env.PASSWORD_POSTGRES,
+      database: process.env.DB_POSTGRES,
       autoLoadEntities: true,
       // synchronize: true
     }),
